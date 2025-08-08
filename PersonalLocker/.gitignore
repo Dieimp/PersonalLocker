@@ -1,0 +1,40 @@
+# Visual Studio 2022
+
+# Pastas de build
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+
+# Arquivos de usuário do Visual Studio
+*.suo
+*.user
+*.pdb
+*.suo
+*.user
+*.vshost.exe
+*.vshost.exe.config
+
+# Pacotes e dependências
+packages/
+node_modules/
+
+# Arquivos de cache e temporários
+*.bak
+*.cache
+*.log
+*.tmp
+_ReSharper.*/
+.idea/
+
+# Arquivos de configuração de teste
+TestResults/
+
+# Arquivos de configurações de CI/CD
+.vs/
+.vspscc
+.vssscc
+
+# Arquivos de usuário e de backup
+[Bb]ackup/
+[Tt]emp/

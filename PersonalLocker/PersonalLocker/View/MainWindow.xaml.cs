@@ -11,5 +11,10 @@ namespace PersonalLocker
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

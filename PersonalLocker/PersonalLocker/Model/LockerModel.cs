@@ -28,11 +28,41 @@ namespace PersonalLocker.Model
             {
                 return !string.IsNullOrEmpty(SysPath) && File.Exists(SysPath);
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 return false;
             }
         }
 
+        public List<LockerModel> GetContentsInsideOfLocker(string SysPath)
+        {
+            List<LockerModel> contents = new List<LockerModel>();
+
+            try
+            {
+                using (var reader = new StreamReader(SysPath))
+                {
+                    var headerLine = reader.ReadLine();
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+
+                        contents.Add( new LockerModel(sysName = values[0].ToString(), sysLogin = values[1].ToString(), sysPasswrod = values[2].ToString(), sysPath = sysPath ));
+
+                        
+
+                    }
+                }
+                    return contents;
+            }
+
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine("Error " + e.Message);
+                throw;
+            }
+        }
     }
 }

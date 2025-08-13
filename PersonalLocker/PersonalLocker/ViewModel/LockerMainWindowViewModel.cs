@@ -2,6 +2,7 @@
 using PersonalLocker.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,14 @@ namespace PersonalLocker.ViewModel
     public class LockerMainWindowViewModel
     {
         private LockerModel _model;
-
+        public ObservableCollection<LockerModel> Contents { get; set; }
         public LockerMainWindowViewModel()
         {
             _model = new LockerModel("","","", "C:\\Users\\marce\\Documents\\projetos\\databases\\FirstLocker.csv");
+            Contents = new ObservableCollection<LockerModel>();
+            FillContentsOfLocker();
             ShowMessageCommand = new RelayCommand(ShowMessage);
+
         }
         public ICommand ShowMessageCommand { get; }
 
@@ -27,13 +31,25 @@ namespace PersonalLocker.ViewModel
             
             string message = (_model.pathExists(_model.sysPath)) ? "Caminho existe" : "Caminho nao existe";
 
-            // A exibição de um MessageBox é uma responsabilidade da View,
-            // mas para um exemplo simples, podemos fazê-lo aqui.
-            // Em uma aplicação real, seria preferível usar um serviço de diálogo.
-            MessageBox.Show(message);
+            MessageBox.Show(_model.GetContentsInsideOfLocker(_model.sysPath).ToString());
         }
 
+        private void FillContentsOfLocker()
+        {
+            try
+            {
+                List<LockerModel> contents = _model.GetContentsInsideOfLocker(_model.sysPath);
 
+                foreach (LockerModel contet in contents)
+                {
+                    Console.WriteLine(contet);
+                    Contents.Add(contet);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
 
+        }
     }
 }

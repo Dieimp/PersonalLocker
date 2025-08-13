@@ -12,11 +12,6 @@
     </Window.DataContext>
 
     <Grid>
-        <Button Content="Clique aqui"
-                Command="{Binding ShowMessageCommand}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Width="100"
-                Height="30"/>
+        <DataGrid ItemsSource="{Binding Contents}" AutoGenerateColumns="True"/>
     </Grid>
 </Window>

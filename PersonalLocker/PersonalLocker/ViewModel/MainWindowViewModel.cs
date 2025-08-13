@@ -13,12 +13,12 @@ namespace PersonalLocker.ViewModel
     public class MainWindowViewModel
     {
         private HelloWorldModel _model;
+
         public MainWindowViewModel()
         {
             _model = new HelloWorldModel();
             ShowMessageCommand = new RelayCommand(ShowMessage);
         }
-
         public ICommand ShowMessageCommand { get; }
 
         private void ShowMessage()
@@ -30,6 +30,8 @@ namespace PersonalLocker.ViewModel
             // mas para um exemplo simples, podemos fazê-lo aqui.
             // Em uma aplicação real, seria preferível usar um serviço de diálogo.
             MessageBox.Show(message);
+
+
         }
 
         
